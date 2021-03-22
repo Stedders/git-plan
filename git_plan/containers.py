@@ -14,6 +14,7 @@ from git_plan.cli.commands.help import Help
 from git_plan.cli.commands.init import Init
 from git_plan.cli.commands.list import List
 from git_plan.cli.commands.plan import Plan
+from git_plan.cli.commands.template import Template
 from git_plan.model.project import Project
 from git_plan.service.git import GitService
 from git_plan.service.plan import PlanService
@@ -91,6 +92,11 @@ class Commands(containers.DeclarativeContainer):
     init_command = providers.Singleton(
         Init,
         project_service=services.project_service,
+        ui_service=services.ui_service,
+        project=core.project
+    )
+    init_command = providers.Singleton(
+        Template,
         ui_service=services.ui_service,
         project=core.project
     )
